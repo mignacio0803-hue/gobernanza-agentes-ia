@@ -1,0 +1,27 @@
+name: Error
+description: Algo no funciona como debería
+title: "[Error] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué ocurre
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducir
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Comportamiento esperado
+  - type: checkboxes
+    id: seguridad
+    attributes:
+      label: Impacto en seguridad
+      options:
+        - label: "Este error podría exponer datos sensibles, saltarse una política o alterar la auditoría (prioridad máxima)"

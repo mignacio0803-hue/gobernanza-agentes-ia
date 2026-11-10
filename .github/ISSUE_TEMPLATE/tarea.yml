@@ -1,0 +1,47 @@
+name: Tarea
+description: Trabajo técnico ejecutable que forma parte de una historia
+title: "[Tarea] "
+labels: ["tipo:tarea"]
+body:
+  - type: input
+    id: padre
+    attributes:
+      label: Historia padre
+      description: "Número de la historia o épica a la que pertenece (por ejemplo, #12). Luego agrégala como sub-issue."
+    validations:
+      required: true
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: Qué resultado concreto debe lograr esta tarea.
+    validations:
+      required: true
+  - type: textarea
+    id: especificacion
+    attributes:
+      label: Especificación técnica
+      description: Módulos, funciones, esquemas, comandos y decisiones necesarias para implementarla.
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: Dependencias
+      placeholder: "#n · título"
+  - type: textarea
+    id: archivos
+    attributes:
+      label: Archivos involucrados
+  - type: markdown
+    attributes:
+      value: |
+        **Definición de terminado:** pruebas en verde, `ruff` sin errores, invariantes de `AGENTS.md` respetados, documentación actualizada y revisión cruzada.
