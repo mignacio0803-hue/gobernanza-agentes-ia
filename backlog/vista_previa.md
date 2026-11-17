@@ -1655,7 +1655,7 @@ Las tareas de implementación son los *sub-issues* de esta historia. La historia
 
 ---
 
-## #21 [GOB] Repositorio base: estructura, uv, ruff, pytest y CI
+## #21 [GOB] [Task] Repositorio base: estructura, uv, ruff, pytest y CI
 
 **Labels:** `type: task`, `priority:P0`, `module:infra`
 
@@ -1735,7 +1735,7 @@ Hereda los requisitos de #7. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #22 [GOB] Documento de arquitectura y registro de decisiones (ADR)
+## #22 [GOB] [Task] Documento de arquitectura y registro de decisiones (ADR)
 
 **Labels:** `type: task`, `priority:P0`, `module:infra`
 
@@ -1806,7 +1806,7 @@ Hereda los requisitos de #7. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #23 [GOB] Modelo de amenazas STRIDE
+## #23 [GOB] [Task] Modelo de amenazas STRIDE
 
 **Labels:** `type: task`, `priority:P0`, `module:seguridad`
 
@@ -1870,7 +1870,7 @@ Hereda los requisitos de #7. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #24 [GOB] Docker Compose con Odoo Community y PostgreSQL
+## #24 [GOB] [Task] Docker Compose con Odoo Community y PostgreSQL
 
 **Labels:** `type: task`, `priority:P0`, `module:infra`, `plan-b`
 
@@ -1942,7 +1942,7 @@ Hereda los requisitos de #8. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #25 [GOB] Usuario técnico con permisos mínimos y verificación de la API externa de Odoo
+## #25 [GOB] [Task] Usuario técnico con permisos mínimos y verificación de la API externa de Odoo
 
 **Labels:** `type: task`, `priority:P0`, `module:infra`, `plan-b`
 
@@ -2013,7 +2013,7 @@ Hereda los requisitos de #8. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #26 [GOB] Script de carga de datos ficticios en Odoo
+## #26 [GOB] [Task] Script de carga de datos ficticios en Odoo
 
 **Labels:** `type: task`, `priority:P0`, `module:infra`
 
@@ -2084,7 +2084,7 @@ Hereda los requisitos de #8. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #27 [GOB] Cliente Python para Odoo (OdooClient)
+## #27 [GOB] [Task] Cliente Python para Odoo (OdooClient)
 
 **Labels:** `type: task`, `priority:P0`, `module:operaciones`
 
@@ -2154,7 +2154,7 @@ Hereda los requisitos de #8. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #28 [GOB] Formato y validación de config/mcp_servers.yaml
+## #28 [GOB] [Task] Formato y validación de config/mcp_servers.yaml
 
 **Labels:** `type: task`, `priority:P1`, `module:operaciones`
 
@@ -2237,7 +2237,7 @@ Hereda los requisitos de #9. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #29 [GOB] Registro condicional de herramientas en los servidores MCP
+## #29 [GOB] [Task] Registro condicional de herramientas en los servidores MCP
 
 **Labels:** `type: task`, `priority:P1`, `module:operaciones`
 
@@ -2307,7 +2307,7 @@ Hereda los requisitos de #9. Detalle en [`docs/seguridad.md`](../blob/dev/docs/s
 
 ---
 
-## #30 [GOB] Gateway MCP agregador (servidor de servidores)
+## #30 [GOB] [Task] Gateway MCP agregador (servidor de servidores)
 
 **Labels:** `type: task`, `priority:P0`, `module:gobernanza`
 
@@ -2384,7 +2384,7 @@ Hereda los requisitos de #13. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #31 [GOB] Motor de políticas con denegación por defecto y plantillas base
+## #31 [GOB] [Task] Motor de políticas con denegación por defecto y plantillas base
 
 **Labels:** `type: task`, `priority:P0`, `module:gobernanza`
 
@@ -2479,7 +2479,7 @@ Hereda los requisitos de #13. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #32 [GOB] Integrar el motor de políticas en el gateway
+## #32 [GOB] [Task] Integrar el motor de políticas en el gateway
 
 **Labels:** `type: task`, `priority:P0`, `module:gobernanza`
 
@@ -2552,7 +2552,7 @@ Hereda los requisitos de #13. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #33 [GOB] Interfaz LLMProvider e implementación con Gemini
+## #33 [GOB] [Task] Interfaz LLMProvider e implementación con Gemini
 
 **Labels:** `type: task`, `priority:P0`, `module:operaciones`
 
@@ -2623,7 +2623,7 @@ Hereda los requisitos de #10. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #34 [GOB] Agente CLI: bucle de conversación y cliente MCP hacia el gateway
+## #34 [GOB] [Task] Agente CLI: bucle de conversación y cliente MCP hacia el gateway
 
 **Labels:** `type: task`, `priority:P0`, `module:operaciones`
 
@@ -2693,7 +2693,7 @@ Hereda los requisitos de #10. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #35 [GOB] Servidor MCP de CRM: herramientas de consulta
+## #35 [GOB] [Task] Servidor MCP de CRM: herramientas de consulta
 
 **Labels:** `type: task`, `priority:P1`, `module:operaciones`
 
@@ -2768,7 +2768,7 @@ Hereda los requisitos de #11. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #36 [GOB] Servidor MCP de CRM: crear y actualizar oportunidades
+## #36 [GOB] [Task] Servidor MCP de CRM: crear y actualizar oportunidades
 
 **Labels:** `type: task`, `priority:P2`, `module:operaciones`
 
@@ -2841,7 +2841,7 @@ Hereda los requisitos de #12. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #37 [GOB] Servidor MCP de Facturación: consultar y crear borradores
+## #37 [GOB] [Task] Servidor MCP de Facturación: consultar y crear borradores
 
 **Labels:** `type: task`, `priority:P1`, `module:operaciones`
 
@@ -2912,7 +2912,7 @@ Hereda los requisitos de #14. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #38 [GOB] Herramienta validar_factura (riesgo alto)
+## #38 [GOB] [Task] Herramienta validar_factura (riesgo alto)
 
 **Labels:** `type: task`, `priority:P1`, `module:operaciones`
 
@@ -2982,7 +2982,7 @@ Hereda los requisitos de #14. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #39 [GOB] Cola de aprobaciones en SQLite
+## #39 [GOB] [Task] Cola de aprobaciones en SQLite
 
 **Labels:** `type: task`, `priority:P1`, `module:gobernanza`
 
@@ -3055,7 +3055,7 @@ Hereda los requisitos de #15. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #40 [GOB] Flujo de aprobación en el gateway
+## #40 [GOB] [Task] Flujo de aprobación en el gateway
 
 **Labels:** `type: task`, `priority:P1`, `module:gobernanza`
 
@@ -3128,7 +3128,7 @@ Hereda los requisitos de #15. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #41 [GOB] CLI de aprobación para supervisores
+## #41 [GOB] [Task] CLI de aprobación para supervisores
 
 **Labels:** `type: task`, `priority:P1`, `module:gobernanza`
 
@@ -3197,7 +3197,7 @@ Hereda los requisitos de #15. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #42 [GOB] Bloqueo y registro de acciones no permitidas
+## #42 [GOB] [Task] Bloqueo y registro de acciones no permitidas
 
 **Labels:** `type: task`, `priority:P1`, `module:gobernanza`
 
@@ -3269,7 +3269,7 @@ Hereda los requisitos de #16. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #43 [GOB] Escenario de inyección de instrucciones
+## #43 [GOB] [Task] Escenario de inyección de instrucciones
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3339,7 +3339,7 @@ Hereda los requisitos de #16. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #44 [GOB] Detectores de datos sensibles
+## #44 [GOB] [Task] Detectores de datos sensibles
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3414,7 +3414,7 @@ Hereda los requisitos de #17. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #45 [GOB] Bóveda de tokens cifrada
+## #45 [GOB] [Task] Bóveda de tokens cifrada
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3488,7 +3488,7 @@ Hereda los requisitos de #17. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #46 [GOB] Integrar el enmascaramiento en el gateway y el agente
+## #46 [GOB] [Task] Integrar el enmascaramiento en el gateway y el agente
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3562,7 +3562,7 @@ Hereda los requisitos de #17. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #47 [GOB] Registro de auditoría encadenado con hash
+## #47 [GOB] [Task] Registro de auditoría encadenado con hash
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3634,7 +3634,7 @@ Hereda los requisitos de #18. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #48 [GOB] Consulta de la traza por API y CLI
+## #48 [GOB] [Task] Consulta de la traza por API y CLI
 
 **Labels:** `type: task`, `priority:P1`, `module:seguridad`
 
@@ -3703,7 +3703,7 @@ Hereda los requisitos de #18. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #49 [GOB] Verificación de integridad del registro
+## #49 [GOB] [Task] Verificación de integridad del registro
 
 **Labels:** `type: task`, `priority:P2`, `module:seguridad`
 
@@ -3771,7 +3771,7 @@ Hereda los requisitos de #19. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #50 [GOB] Panel: base FastAPI, autenticación y roles
+## #50 [GOB] [Task] Panel: base FastAPI, autenticación y roles
 
 **Labels:** `type: task`, `priority:P2`, `module:panel`
 
@@ -3841,7 +3841,7 @@ Hereda los requisitos de #20. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #51 [GOB] Panel: vista de solicitudes pendientes
+## #51 [GOB] [Task] Panel: vista de solicitudes pendientes
 
 **Labels:** `type: task`, `priority:P2`, `module:panel`
 
@@ -3908,7 +3908,7 @@ Hereda los requisitos de #20. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #52 [GOB] Panel: vista de traza y verificación de integridad
+## #52 [GOB] [Task] Panel: vista de traza y verificación de integridad
 
 **Labels:** `type: task`, `priority:P2`, `module:panel`
 
@@ -3974,7 +3974,7 @@ Hereda los requisitos de #20. Detalle en [`docs/seguridad.md`](../blob/dev/docs/
 
 ---
 
-## #53 [GOB] Configurar GitHub Projects y capturar el cronograma (Anexo A)
+## #53 [GOB] [Task] Configurar GitHub Projects y capturar el cronograma (Anexo A)
 
 **Labels:** `type: task`, `priority:P2`, `module:gestion`
 
@@ -4029,7 +4029,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #54 [GOB] Entrevistas de validación del problema (2–3)
+## #54 [GOB] [Task] Entrevistas de validación del problema (2–3)
 
 **Labels:** `type: task`, `priority:P1`, `module:gestion`
 
@@ -4082,7 +4082,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #55 [GOB] Plan de pruebas y matriz de trazabilidad
+## #55 [GOB] [Task] Plan de pruebas y matriz de trazabilidad
 
 **Labels:** `type: task`, `priority:P1`, `module:gestion`
 
@@ -4140,7 +4140,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #56 [GOB] Pruebas de punta a punta y medición de indicadores
+## #56 [GOB] [Task] Pruebas de punta a punta y medición de indicadores
 
 **Labels:** `type: task`, `priority:P1`, `module:gestion`
 
@@ -4194,7 +4194,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #57 [GOB] Manual de instalación y configuración
+## #57 [GOB] [Task] Manual de instalación y configuración
 
 **Labels:** `type: task`, `priority:P1`, `module:gestion`
 
@@ -4251,7 +4251,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #58 [GOB] Guion de demostración y video
+## #58 [GOB] [Task] Guion de demostración y video
 
 **Labels:** `type: task`, `priority:P0`, `module:gestion`
 
@@ -4304,7 +4304,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #59 [GOB] Informe final
+## #59 [GOB] [Task] Informe final
 
 **Labels:** `type: task`, `priority:P0`, `module:gestion`
 
@@ -4356,7 +4356,7 @@ Sin requisitos específicos; aplican los invariantes de `AGENTS.md`.
 
 ---
 
-## #60 [GOB] Ensayo de la presentación
+## #60 [GOB] [Task] Ensayo de la presentación
 
 **Labels:** `type: task`, `priority:P1`, `module:gestion`
 

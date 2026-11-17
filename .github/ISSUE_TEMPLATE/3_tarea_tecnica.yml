@@ -1,12 +1,12 @@
 name: '🔧 Tarea técnica'
 description: 'Trabajo de implementación que aporta a una historia'
-title: '[GOB] '
+title: '[GOB] [Task] '
 labels: ['type: task']
 body:
   - type: markdown
     attributes:
       value: |
-        - **Título:** `[GOB] ` seguido de la acción desde la perspectiva del usuario.
+        - **Título:** `[GOB] [Task] ` seguido del trabajo concreto. Ej.: `[GOB] [Task] Cola de aprobaciones en SQLite`.
         - **En el Project:** cuélgalo de su padre como sub-issue y asígnale *Sprint*. Los campos *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* se llenan solos.
   - type: textarea
     id: historia

@@ -146,6 +146,8 @@ class Backlog:
     def title(self, item: dict) -> str:
         if item["tipo"] == "epica":
             return f"{PREFIX} [Épica] {item['modulo']} · {item['resultado']}"
+        if item["tipo"] == "tarea":
+            return f"{PREFIX} [Task] {item['titulo']}"
         return f"{PREFIX} {item['titulo']}"
 
     def labels(self, item: dict) -> list[str]:

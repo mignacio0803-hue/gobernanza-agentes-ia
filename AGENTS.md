@@ -73,7 +73,7 @@ El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea*
 
 ### Backlog y tablero
 
-- **Títulos:** `[GOB] ` seguido de la acción; las épicas, `[GOB] [Épica] <Módulo> · <resultado>`.
+- **Títulos:** historias `[GOB] HUxx · <acción>` o `[GOB] HTxx · <acción>`; tareas `[GOB] [Task] <trabajo concreto>`; épicas `[GOB] [Épica] <Módulo> · <resultado>`.
 - **Formato:** usa las plantillas de `.github/ISSUE_TEMPLATE/` (épica, historia INVEST, tarea técnica, spike, bug). Los requisitos de seguridad se marcan con el catálogo de `docs/seguridad.md`.
 - **Labels:** tipo (`epic`, `type: user-story`, `type: tech-story`, `type: task`, `type: spike`, `type: bug`), `priority:P0–P3`, `points:N`, `module:<capa>`, y de proceso `invest: needs-refinement`, `needs-triage`, `bloqueado`, `plan-b`.
 - **Project:** *Status* (Todo → In Progress → Code Review → QA → Done) y *Sprint* se mueven a mano. *Puntos*, *Épica*, *Fecha inicio*, *Fecha objetivo* y *Completado %* los calcula `scripts/metricas_project.py` (workflow *Métricas del Project*, cada hora en días hábiles).
