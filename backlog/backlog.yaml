@@ -11,19 +11,35 @@ milestones:
   - {key: CIERRE, title: "Cierre · 14–16 dic", due: "2026-12-16", description: "Informe final, manual, video y presentación."}
 
 labels:
-  - {name: "tipo:epica", color: "5319E7", description: "Épica"}
-  - {name: "tipo:historia", color: "0E8A16", description: "Historia de usuario"}
-  - {name: "tipo:historia-tecnica", color: "1D76DB", description: "Historia técnica"}
-  - {name: "tipo:tarea", color: "C5DEF5", description: "Tarea ejecutable"}
-  - {name: "capa:infra", color: "BFD4F2", description: "Infraestructura y base"}
-  - {name: "capa:operaciones", color: "FBCA04", description: "Odoo, servidores MCP y agente"}
-  - {name: "capa:gobernanza", color: "D93F0B", description: "Políticas y aprobaciones"}
-  - {name: "capa:seguridad", color: "B60205", description: "Enmascaramiento y auditoría"}
-  - {name: "capa:panel", color: "006B75", description: "Panel web"}
-  - {name: "capa:gestion", color: "EDEDED", description: "Gestión, pruebas y documentación"}
-  - {name: "pts:3", color: "F9D0C4", description: "3 puntos de historia"}
-  - {name: "pts:5", color: "F9D0C4", description: "5 puntos de historia"}
-  - {name: "pts:8", color: "F9D0C4", description: "8 puntos de historia"}
+  # Tipo (equivale a los tipos de issue del ERP; en una cuenta personal se usan labels)
+  - {name: "epic", color: "5319E7", description: "Épica"}
+  - {name: "type: user-story", color: "0E8A16", description: "Historia de usuario"}
+  - {name: "type: tech-story", color: "1D76DB", description: "Historia técnica (sin usuario final directo)"}
+  - {name: "type: task", color: "C5DEF5", description: "Tarea ejecutable"}
+  - {name: "type: spike", color: "FEF2C0", description: "Investigación acotada en tiempo"}
+  - {name: "type: bug", color: "D73A4A", description: "Comportamiento incorrecto"}
+  # Prioridad
+  - {name: "priority:P0", color: "B60205", description: "Crítica: bloquea el camino principal"}
+  - {name: "priority:P1", color: "D93F0B", description: "Alta: necesaria para el MVP"}
+  - {name: "priority:P2", color: "FBCA04", description: "Media: deseable en el MVP"}
+  - {name: "priority:P3", color: "C2E0C6", description: "Baja: si sobra tiempo"}
+  # Puntos (Fibonacci)
+  - {name: "points:1", color: "F9D0C4", description: "1 punto"}
+  - {name: "points:2", color: "F9D0C4", description: "2 puntos"}
+  - {name: "points:3", color: "F9D0C4", description: "3 puntos"}
+  - {name: "points:5", color: "F9D0C4", description: "5 puntos"}
+  - {name: "points:8", color: "F9D0C4", description: "8 puntos"}
+  - {name: "points:13", color: "F9D0C4", description: "13 puntos: dividir antes del sprint"}
+  # Módulo (capa de la arquitectura)
+  - {name: "module:infra", color: "BFD4F2", description: "Infraestructura y base"}
+  - {name: "module:operaciones", color: "FBCA04", description: "Odoo, servidores MCP y agente"}
+  - {name: "module:gobernanza", color: "D93F0B", description: "Políticas y aprobaciones"}
+  - {name: "module:seguridad", color: "B60205", description: "Enmascaramiento y auditoría"}
+  - {name: "module:panel", color: "006B75", description: "Panel web"}
+  - {name: "module:gestion", color: "EDEDED", description: "Gestión, pruebas y documentación"}
+  # Proceso
+  - {name: "invest: needs-refinement", color: "D4C5F9", description: "Falta completar el checklist INVEST"}
+  - {name: "needs-triage", color: "EDEDED", description: "Pendiente de clasificar"}
   - {name: "plan-b", color: "E99695", description: "Punto de control del plan B"}
   - {name: "bloqueado", color: "000000", description: "Esperando una dependencia"}
 
@@ -42,6 +58,8 @@ items:
     - Odoo Community en Docker con CRM y Facturación, usuario técnico con permisos mínimos y datos ficticios.
   indicadores: |
     - Odoo operativo con datos cargados al cierre del Sprint 1 (si no, se activa el plan B).
+  modulo: Fundaciones
+  resultado: Arquitectura, repositorio y entorno Odoo
 
 - id: E2
   tipo: epica
@@ -55,6 +73,8 @@ items:
   indicadores: |
     - Tiempo para habilitar o deshabilitar una herramienta: ≤ 10 minutos, sin modificar código.
     - Herramientas configuradas que funcionan contra Odoo: 100 %.
+  modulo: Operaciones
+  resultado: Conectores MCP configurables y agente
 
 - id: E3
   tipo: epica
@@ -70,6 +90,8 @@ items:
     - Acciones no permitidas bloqueadas en pruebas: 100 %.
     - Acciones de riesgo alto ejecutadas sin aprobación: 0.
     - Tiempo agregado por la evaluación de políticas: < 1 s por acción.
+  modulo: Gobernanza
+  resultado: Políticas, riesgo y aprobación humana
 
 - id: E4
   tipo: epica
@@ -84,6 +106,8 @@ items:
     - Datos sensibles en claro enviados al modelo: 0.
     - Acciones registradas en la traza: 100 %.
     - Alteraciones del registro detectadas: 100 %.
+  modulo: Seguridad
+  resultado: Enmascaramiento y auditoría verificable
 
 - id: E5
   tipo: epica
@@ -96,6 +120,8 @@ items:
     - Vista de traza con filtros y verificación de integridad.
   indicadores: |
     - Una acción pendiente se revisa y resuelve desde una sola pantalla.
+  modulo: Panel
+  resultado: Supervisores y auditores con interfaz propia
 
 - id: E6
   tipo: epica
@@ -108,6 +134,8 @@ items:
     - Manual de instalación, informe final, video y presentación.
   indicadores: |
     - Criterios de aceptación cumplidos: 100 % de las historias del MVP.
+  modulo: Cierre
+  resultado: Validación, documentación y entrega
 
 # ============================ HISTORIAS ============================
 
@@ -123,6 +151,37 @@ items:
     - "Existe `docs/arquitectura.md` actualizado y al menos 5 ADR en `docs/decisiones/`."
     - "Existe `docs/amenazas.md` con el análisis STRIDE de los componentes."
     - "El repositorio instala con `uv sync` y la CI ejecuta ruff y pytest en cada PR."
+  prioridad: P0
+  contexto: |
+    Hoy el repositorio solo tiene el backlog y la arquitectura en borrador. Sin una estructura común, reglas de calidad automáticas y un modelo de amenazas, cada integrante (y cada agente de código) trabajaría con supuestos distintos y los invariantes de seguridad quedarían sin respaldo.
+
+    **Valor:** todo el desarrollo posterior parte de la misma base y la CI detecta errores antes de la revisión.
+    **Impacto de no hacerlo:** retrabajo en cada PR y decisiones de diseño sin registrar que después no se pueden justificar en el informe.
+  escenarios:
+    - nombre: Instalación desde cero
+      dado: un integrante clona el repositorio en un equipo nuevo
+      cuando: ejecuta `uv sync`
+      entonces: el entorno queda instalado sin errores y `uv run pytest -m "not integration"` pasa
+    - nombre: PR con errores de estilo
+      dado: un PR introduce un error de `ruff`
+      cuando: se ejecuta la CI
+      entonces: la CI falla y el PR no se puede fusionar
+    - nombre: Decisión trazable
+      dado: una decisión de arquitectura relevante (gateway, proveedor de modelo, almacenamiento)
+      cuando: alguien revisa `docs/decisiones/`
+      entonces: encuentra el ADR con contexto, alternativas y consecuencias
+  seguridad:
+    datos:
+      - Credenciales
+    requisitos:
+      - RS-SEC-01
+      - RS-MCP-01
+    criterios:
+      - Dado un `.env` con claves locales, cuando se hace commit, entonces `.gitignore` lo excluye y `.env.example` solo tiene nombres de variables.
+      - Dado el modelo STRIDE, cuando se revisa cada componente, entonces cada amenaza tiene un control asociado a un requisito de `docs/seguridad.md`.
+  supuestos: Ambos integrantes usan Python 3.12 y uv. La protección de ramas se configura en GitHub (Gitflow con `dev` y `main`).
+  fuera_de_alcance: Despliegue en la nube y empaquetado del prototipo.
+  notas_tecnicas: Estructura, dependencias y comandos definidos en `AGENTS.md` (sección 3) y `docs/arquitectura.md`.
 
 - id: HT01
   tipo: historia-tecnica
@@ -138,6 +197,40 @@ items:
     - "Existe un usuario técnico con permisos mínimos y credencial de API en `.env`."
     - "El script de carga crea clientes, oportunidades y facturas ficticias con RUT válidos."
     - "**Punto de control del plan B (13/11):** si Odoo no está operativo con datos, se activa EspoCRM o un sistema simulado."
+  prioridad: P0
+  contexto: |
+    El prototipo necesita un ERP real donde el agente opere. Odoo Community cubre CRM y Facturación, pero hay que levantarlo, cargarlo con datos ficticios creíbles y dar acceso a un usuario técnico con permisos mínimos.
+
+    **Valor:** todas las historias de operaciones se prueban contra un sistema real y no contra simulaciones.
+    **Impacto de no hacerlo:** si Odoo no está estable al cierre del Sprint 1 se activa el plan B (EspoCRM o un sistema simulado), lo que cambia el alcance de las épicas 2 y 3.
+  escenarios:
+    - nombre: Odoo operativo
+      dado: un equipo con Docker
+      cuando: se ejecuta `docker compose up -d odoo db`
+      entonces: Odoo responde con los módulos `crm` y `account` instalados
+    - nombre: Datos de prueba
+      dado: una base de Odoo vacía
+      cuando: se ejecuta el script de carga
+      entonces: quedan clientes, oportunidades y facturas ficticias con RUT válidos
+    - nombre: Punto de control del plan B
+      dado: el cierre del Sprint 1
+      cuando: Odoo no está operativo con datos
+      entonces: se registra la decisión de activar el plan B en la Sprint Review
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+      - Credenciales
+    requisitos:
+      - RS-AZ-01
+      - RS-DAT-03
+      - RS-SEC-01
+    criterios:
+      - Dado el usuario técnico, cuando intenta eliminar un registro o acceder a un módulo no habilitado, entonces Odoo lo rechaza.
+      - Dado el script de carga, cuando genera datos, entonces ningún nombre, RUT, correo o teléfono corresponde a una persona o empresa real.
+  supuestos: Se usa Odoo Community 17 en Docker. La clave de API del usuario técnico se guarda solo en `.env`.
+  fuera_de_alcance: Personalizaciones de Odoo y módulos distintos de CRM y Facturación.
+  notas_tecnicas: La API externa de Odoo es XML-RPC/JSON-RPC; el cliente Python (`src/odoo_client`) la encapsula para el resto del código.
 
 - id: HU05
   tipo: historia
@@ -151,6 +244,38 @@ items:
   para: "limitar lo que puede hacer el agente sin modificar código"
   criterios:
     - "Una herramienta que no está en la configuración no está disponible para el agente."
+  prioridad: P1
+  contexto: |
+    El administrador de TI necesita decidir qué puede hacer el agente sobre Odoo. Si las herramientas están fijas en el código, cada cambio requiere programar, revisar y desplegar.
+
+    **Valor:** habilitar o deshabilitar una herramienta toma minutos y no requiere tocar código.
+    **Impacto de no hacerlo:** el agente expone más capacidades de las necesarias y cualquier ajuste depende de un desarrollador.
+  escenarios:
+    - nombre: Herramienta habilitada
+      dado: una herramienta listada en `config/mcp_servers.yaml`
+      cuando: el agente pide el listado de herramientas
+      entonces: la herramienta aparece y se puede usar
+    - nombre: Herramienta no configurada
+      dado: una herramienta que no está en la configuración
+      cuando: el agente intenta usarla
+      entonces: no está disponible y el intento se rechaza
+    - nombre: Configuración inválida
+      dado: un archivo de configuración con un campo desconocido o un tipo incorrecto
+      cuando: se inicia el servidor MCP
+      entonces: el servidor no arranca y muestra un error que indica el campo
+  seguridad:
+    datos:
+      - Ninguno
+    requisitos:
+      - RS-POL-01
+      - RS-VAL-01
+      - RS-MCP-01
+    criterios:
+      - Dado un servidor MCP sin herramientas configuradas, cuando arranca, entonces no expone ninguna herramienta.
+      - Dado un archivo con un servidor MCP de terceros, cuando se valida, entonces la configuración se rechaza.
+  supuestos: La configuración se lee al iniciar; no se requiere recarga en caliente.
+  fuera_de_alcance: Interfaz gráfica para editar la configuración.
+  notas_tecnicas: Validación con `pydantic`; el registro condicional de herramientas vive en `src/mcp_servers`.
 
 - id: HT03
   tipo: historia-tecnica
@@ -164,6 +289,39 @@ items:
     - "El agente lista las herramientas que le expone el gateway y las puede invocar."
     - "Cambiar de proveedor de modelo requiere solo implementar `LLMProvider` y cambiar la configuración."
     - "Todo lo enviado al modelo queda en `logs/llm_outbound.jsonl`."
+  prioridad: P0
+  contexto: |
+    Para demostrar la gobernanza hace falta un agente que converse con el usuario y use herramientas reales. Ese agente debe conectarse solo al gateway y poder cambiar de proveedor de modelo sin rehacerse.
+
+    **Valor:** el flujo completo usuario → agente → gateway → Odoo se puede probar de punta a punta.
+    **Impacto de no hacerlo:** las capas de gobernanza y seguridad no tienen un cliente real que las ejercite.
+  escenarios:
+    - nombre: Listado de herramientas
+      dado: el gateway en ejecución
+      cuando: el agente se conecta
+      entonces: lista solo las herramientas que el gateway le expone
+    - nombre: Cambio de proveedor
+      dado: una nueva implementación de `LLMProvider`
+      cuando: se cambia el proveedor en la configuración
+      entonces: el agente funciona sin otros cambios en el código
+    - nombre: Proveedor no disponible
+      dado: una clave de API inválida o sin conexión
+      cuando: el agente envía un mensaje
+      entonces: muestra un error claro y no queda en un estado inconsistente
+  seguridad:
+    datos:
+      - PII ficticia
+      - Credenciales
+    requisitos:
+      - RS-GW-01
+      - RS-DAT-02
+      - RS-SEC-01
+    criterios:
+      - Dado el agente configurado, cuando se inspecciona su configuración, entonces solo conoce la dirección del gateway.
+      - Dado cualquier mensaje enviado al modelo, cuando se revisa `logs/llm_outbound.jsonl`, entonces el mensaje está registrado.
+  supuestos: Se usa Gemini por costo y disponibilidad; la interfaz permite cambiarlo.
+  fuera_de_alcance: Interfaz web para el agente; memoria de largo plazo entre sesiones.
+  notas_tecnicas: SDK `google-genai` detrás de `LLMProvider` en `src/agent`; cliente MCP del SDK oficial.
 
 - id: HU01
   tipo: historia
@@ -178,6 +336,39 @@ items:
   criterios:
     - "El agente responde con los datos del cliente y sus oportunidades obtenidos desde Odoo."
     - "La acción se clasifica como de riesgo bajo y se ejecuta sin aprobación."
+  prioridad: P1
+  contexto: |
+    El operador comercial prepara cada gestión buscando a mano el cliente y sus oportunidades en el CRM. Es una consulta frecuente y de bajo riesgo, ideal para delegarla en el agente.
+
+    **Valor:** menos tiempo de preparación y respuestas basadas en datos reales de Odoo.
+    **Impacto de no hacerlo:** el agente no aporta valor operativo y no hay un caso de riesgo bajo para contrastar con los de riesgo medio y alto.
+  escenarios:
+    - nombre: Consulta de un cliente
+      dado: un cliente con oportunidades en Odoo
+      cuando: el operador le pide al agente sus oportunidades
+      entonces: el agente responde con los datos del cliente y sus oportunidades obtenidos desde Odoo
+    - nombre: Cliente sin oportunidades
+      dado: un cliente sin oportunidades
+      cuando: el operador las consulta
+      entonces: el agente indica que no tiene oportunidades, sin inventar datos
+    - nombre: Cliente inexistente
+      dado: un nombre que no coincide con ningún cliente
+      cuando: el operador lo consulta
+      entonces: el agente informa que no lo encontró
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+    requisitos:
+      - RS-POL-01
+      - RS-DAT-01
+      - RS-AUD-01
+    criterios:
+      - Dado una consulta de cliente, cuando se clasifica, entonces es de riesgo bajo, se ejecuta sin aprobación y queda en la traza.
+      - Dado la respuesta con RUT, correo o teléfono, cuando se envía al modelo, entonces esos datos van enmascarados (una vez implementada HU08).
+  supuestos: Solo se consultan empresas (`res.partner` con `is_company`).
+  fuera_de_alcance: Búsquedas por campos personalizados o reportes agregados.
+  notas_tecnicas: Herramientas `crm.buscar_clientes`, `crm.obtener_cliente` y `crm.listar_oportunidades` en `src/mcp_servers/crm`.
 
 - id: HU02
   tipo: historia
@@ -192,6 +383,39 @@ items:
   criterios:
     - "La oportunidad queda creada o actualizada en Odoo."
     - "La acción se clasifica como de riesgo medio y queda registrada en la traza."
+  prioridad: P2
+  contexto: |
+    Después de cada reunión el operador comercial actualiza a mano la oportunidad en el CRM. Es una escritura de riesgo medio: no requiere aprobación, pero debe quedar trazada.
+
+    **Valor:** el avance comercial queda registrado sin digitación manual.
+    **Impacto de no hacerlo:** no hay un caso de riesgo medio para mostrar la clasificación intermedia.
+  escenarios:
+    - nombre: Crear oportunidad
+      dado: un cliente existente
+      cuando: el operador pide registrar una nueva oportunidad
+      entonces: queda creada en Odoo con los datos indicados
+    - nombre: Actualizar etapa
+      dado: una oportunidad existente
+      cuando: el operador pide moverla a otra etapa
+      entonces: la etapa se actualiza en Odoo
+    - nombre: Datos incompletos
+      dado: una solicitud sin cliente o sin nombre de oportunidad
+      cuando: el agente intenta registrarla
+      entonces: pide el dato faltante antes de escribir en Odoo
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+    requisitos:
+      - RS-POL-01
+      - RS-AUD-01
+      - RS-VAL-01
+    criterios:
+      - Dado una creación o actualización, cuando se clasifica, entonces es de riesgo medio y queda registrada en la traza con los registros de Odoo afectados.
+      - Dado un intento de eliminar una oportunidad, cuando llega al gateway, entonces se bloquea por no tener política.
+  supuestos: Las etapas disponibles son las del flujo estándar del CRM de Odoo.
+  fuera_de_alcance: Eliminar oportunidades o modificar clientes.
+  notas_tecnicas: Herramientas `crm.crear_oportunidad` y `crm.actualizar_oportunidad`.
 
 - id: HU06
   tipo: historia
@@ -207,6 +431,39 @@ items:
     - "Cada acción tiene un nivel de riesgo asignado: bajo, medio o alto."
     - "Una acción sin política definida se bloquea."
     - "Existen plantillas base de políticas que se pueden seleccionar y ajustar."
+  prioridad: P0
+  contexto: |
+    El núcleo de la gobernanza: el administrador de TI necesita decidir qué puede hacer cada agente y con qué nivel de riesgo, partiendo de plantillas base que ajusta a su empresa. Sin políticas, cualquier herramienta disponible se ejecuta sin control.
+
+    **Valor:** todo lo que no está explícitamente permitido queda bloqueado, y cada acción tiene un riesgo que determina su control.
+    **Impacto de no hacerlo:** HU04, HU07 y la auditoría no tienen sobre qué decidir.
+  escenarios:
+    - nombre: Acción con política
+      dado: una política que permite `crm.buscar_clientes` con riesgo bajo
+      cuando: el agente la invoca
+      entonces: el gateway la ejecuta y registra el riesgo asignado
+    - nombre: Acción sin política
+      dado: una herramienta sin política definida
+      cuando: el agente intenta usarla
+      entonces: el gateway la bloquea y no la lista
+    - nombre: Ajuste de plantilla
+      dado: una plantilla base seleccionada
+      cuando: el administrador cambia el riesgo de una acción en su archivo
+      entonces: el gateway aplica el nuevo riesgo al reiniciarse
+  seguridad:
+    datos:
+      - Ninguno
+    requisitos:
+      - RS-POL-01
+      - RS-GW-01
+      - RS-VAL-01
+      - RS-AUD-01
+    criterios:
+      - Dado una política mal formada, cuando el gateway arranca, entonces no inicia y señala el error (no se ejecuta con políticas parciales).
+      - Dado cualquier evaluación de política, cuando termina, entonces la decisión queda en la traza.
+  supuestos: 'Tres niveles de riesgo: bajo, medio y alto. Las políticas son archivos YAML en `config/policies/`.'
+  fuera_de_alcance: Políticas por horario, por monto o por usuario final.
+  notas_tecnicas: Gateway agregador en `src/gateway`; motor de políticas con denegación por defecto y plantillas en `config/policies/base/`.
 
 - id: HU03
   tipo: historia
@@ -221,6 +478,38 @@ items:
   criterios:
     - "El borrador queda creado en Odoo con los datos de la oportunidad."
     - "El agente no puede validar la factura por sí mismo."
+  prioridad: P1
+  contexto: |
+    Cuando una oportunidad se gana, el operador de facturación arma el borrador de factura copiando datos desde el CRM. Crear el borrador es de riesgo medio; validarlo (emitirlo) es de riesgo alto y no le corresponde al agente.
+
+    **Valor:** menos tiempo de preparación y un caso claro de separación entre preparar y emitir.
+    **Impacto de no hacerlo:** no hay un caso de riesgo alto con valor de negocio para HU04.
+  escenarios:
+    - nombre: Borrador desde oportunidad ganada
+      dado: una oportunidad ganada
+      cuando: el operador pide preparar la factura
+      entonces: queda un borrador en Odoo con el cliente, los productos y los montos de la oportunidad
+    - nombre: Oportunidad no ganada
+      dado: una oportunidad en otra etapa
+      cuando: se pide preparar su factura
+      entonces: el agente informa que no corresponde y no crea nada
+    - nombre: Intento de validar
+      dado: un borrador creado
+      cuando: el agente intenta validarlo por sí mismo
+      entonces: la acción queda pendiente de aprobación (HU04) y no se ejecuta
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+    requisitos:
+      - RS-RSK-01
+      - RS-POL-01
+      - RS-AUD-01
+    criterios:
+      - Dado `validar_factura`, cuando el agente la invoca, entonces se clasifica como riesgo alto y no llega a Odoo sin aprobación.
+  supuestos: Una oportunidad genera una factura con una línea por producto.
+  fuera_de_alcance: Notas de crédito, pagos y facturación electrónica ante el SII.
+  notas_tecnicas: Servidor MCP de Facturación en `src/mcp_servers/invoicing`.
 
 - id: HU04
   tipo: historia
@@ -236,6 +525,39 @@ items:
     - "La acción queda pendiente hasta que el supervisor decide."
     - "El supervisor ve la acción, su nivel de riesgo, los datos involucrados y la justificación del agente."
     - "Si la rechaza, la acción no se ejecuta en Odoo."
+  prioridad: P1
+  contexto: |
+    Algunas acciones, como validar una factura, tienen consecuencias que no se pueden deshacer fácilmente. El supervisor necesita ver qué quiere hacer el agente, con qué datos y por qué, y decidir antes de que ocurra.
+
+    **Valor:** ninguna acción crítica se ejecuta sin una decisión humana registrada.
+    **Impacto de no hacerlo:** se incumple el invariante 4 y el prototipo no demuestra control humano.
+  escenarios:
+    - nombre: Aprobación
+      dado: una acción de riesgo alto pendiente
+      cuando: el supervisor la aprueba
+      entonces: se ejecuta en Odoo y la traza registra quién aprobó
+    - nombre: Rechazo
+      dado: una acción de riesgo alto pendiente
+      cuando: el supervisor la rechaza
+      entonces: no se ejecuta en Odoo y el agente informa el rechazo
+    - nombre: Sin pendientes
+      dado: ninguna acción pendiente
+      cuando: el supervisor revisa la cola
+      entonces: ve que no hay solicitudes
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+    requisitos:
+      - RS-RSK-01
+      - RS-AUD-01
+      - RS-AUT-01
+    criterios:
+      - Dado una acción pendiente, cuando alguien sin rol de supervisor intenta aprobarla, entonces se rechaza y queda registrado.
+      - Dado una acción ya resuelta, cuando se intenta aprobarla de nuevo, entonces no se ejecuta dos veces.
+  supuestos: En el Sprint 3 la aprobación se hace por CLI; el panel (HT04) llega en el Sprint 5.
+  fuera_de_alcance: Aprobaciones múltiples o por montos.
+  notas_tecnicas: Cola en SQLite y flujo de aprobación en el gateway.
 
 - id: HU07
   tipo: historia
@@ -250,6 +572,37 @@ items:
   criterios:
     - "Un intento de eliminar registros o de usar una herramienta no autorizada se bloquea."
     - "El intento queda registrado en la traza como rechazado."
+  prioridad: P1
+  contexto: |
+    Un agente puede intentar acciones fuera de su alcance por error o porque alguien lo manipula con instrucciones escondidas en los datos (por ejemplo, en la nota de un cliente). El responsable de seguridad necesita que esos intentos se bloqueen y queden registrados.
+
+    **Valor:** evidencia de que el control funciona incluso ante inyección de instrucciones.
+    **Impacto de no hacerlo:** la gobernanza no resiste el escenario de ataque más común en agentes.
+  escenarios:
+    - nombre: Eliminar registros
+      dado: el agente intenta eliminar un cliente
+      cuando: la solicitud llega al gateway
+      entonces: se bloquea y queda en la traza como rechazada
+    - nombre: Inyección de instrucciones
+      dado: una nota de cliente con instrucciones para validar facturas
+      cuando: el agente la lee
+      entonces: cualquier acción inducida se bloquea o queda pendiente de aprobación según su riesgo
+    - nombre: Herramienta no autorizada
+      dado: una herramienta que existe pero no tiene política
+      cuando: el agente la invoca
+      entonces: se bloquea
+  seguridad:
+    datos:
+      - PII ficticia
+    requisitos:
+      - RS-INJ-01
+      - RS-POL-01
+      - RS-AUD-01
+    criterios:
+      - Dado el escenario de inyección documentado, cuando se ejecuta la prueba de seguridad, entonces ninguna acción no permitida llega a Odoo.
+  supuestos: El escenario de inyección se reproduce con datos ficticios cargados en Odoo.
+  fuera_de_alcance: Detección automática de instrucciones maliciosas en el texto.
+  notas_tecnicas: Pruebas en `tests/security`.
 
 - id: HU08
   tipo: historia
@@ -264,6 +617,40 @@ items:
   criterios:
     - "El modelo solo recibe valores enmascarados."
     - "Las acciones en Odoo se ejecutan con los datos reales, que se recuperan localmente y nunca salen del entorno."
+  prioridad: P1
+  contexto: |
+    El agente envía al proveedor del modelo lo que lee de Odoo. Sin control, RUT, correos, teléfonos y direcciones de clientes salen del entorno de la empresa.
+
+    **Valor:** se usa un modelo externo sin exponer datos personales.
+    **Impacto de no hacerlo:** se incumple el invariante 3, el principal argumento de seguridad del prototipo.
+  escenarios:
+    - nombre: Respuesta con datos sensibles
+      dado: una consulta que devuelve RUT, correo y teléfono
+      cuando: el resultado se envía al modelo
+      entonces: esos valores van reemplazados por tokens
+    - nombre: Acción con datos reales
+      dado: el modelo pide actualizar un registro usando un token
+      cuando: el gateway ejecuta la acción
+      entonces: Odoo recibe el valor real, recuperado localmente
+    - nombre: Sin datos sensibles
+      dado: una respuesta sin datos sensibles
+      cuando: se envía al modelo
+      entonces: se envía sin cambios
+  seguridad:
+    datos:
+      - PII ficticia
+      - Credenciales
+    requisitos:
+      - RS-DAT-01
+      - RS-DAT-02
+      - RS-AUD-02
+      - RS-SEC-01
+    criterios:
+      - Dado una sesión de prueba completa, cuando se revisa `logs/llm_outbound.jsonl`, entonces hay cero RUT, correos o teléfonos en claro.
+      - Dado la bóveda de tokens, cuando se inspecciona en disco, entonces sus valores están cifrados con `VAULT_KEY`.
+  supuestos: Los detectores cubren el formato chileno de RUT y teléfono.
+  fuera_de_alcance: Detección de nombres propios en texto libre.
+  notas_tecnicas: Detectores, bóveda cifrada (`cryptography`) e integración en el gateway y el agente.
 
 - id: HU09
   tipo: historia
@@ -278,6 +665,37 @@ items:
   criterios:
     - "Cada entrada indica fecha, agente, herramienta, registros de Odoo referenciados, decisión de la política y aprobador."
     - "La traza no contiene datos sensibles en claro."
+  prioridad: P1
+  contexto: |
+    El auditor necesita demostrar qué hizo cada agente, con qué datos y quién aprobó. Hoy no existe un registro unificado de las acciones.
+
+    **Valor:** cada acción del agente tiene evidencia consultable.
+    **Impacto de no hacerlo:** se incumple el invariante 5 y no hay forma de auditar al agente.
+  escenarios:
+    - nombre: Consulta de la traza
+      dado: acciones ejecutadas por el agente
+      cuando: el auditor consulta la traza
+      entonces: ve fecha, agente, herramienta, registros de Odoo, decisión y aprobador de cada una
+    - nombre: Filtro
+      dado: una traza con muchas entradas
+      cuando: el auditor filtra por fecha o decisión
+      entonces: ve solo las entradas que cumplen el filtro
+    - nombre: Traza vacía
+      dado: un sistema recién instalado
+      cuando: el auditor consulta
+      entonces: ve que no hay entradas
+  seguridad:
+    datos:
+      - PII ficticia
+      - Comerciales
+    requisitos:
+      - RS-AUD-01
+      - RS-AUD-02
+    criterios:
+      - Dado cualquier entrada de la traza, cuando se busca un RUT, correo o teléfono en claro, entonces no se encuentra.
+  supuestos: La traza se guarda localmente en SQLite o JSONL.
+  fuera_de_alcance: Exportación a sistemas SIEM.
+  notas_tecnicas: Registro encadenado con hash en `src/gateway` y consulta por API y CLI.
 
 - id: HU10
   tipo: historia
@@ -291,6 +709,35 @@ items:
   para: "confiar en él como evidencia"
   criterios:
     - "El sistema detecta y señala cualquier entrada modificada o eliminada."
+  prioridad: P2
+  contexto: |
+    Un registro de auditoría solo sirve como evidencia si se puede demostrar que nadie lo alteró.
+
+    **Valor:** el auditor confía en la traza como evidencia.
+    **Impacto de no hacerlo:** la traza de HU09 podría modificarse sin que nadie lo note.
+  escenarios:
+    - nombre: Registro íntegro
+      dado: una traza sin alteraciones
+      cuando: el auditor la verifica
+      entonces: el sistema confirma que está íntegra
+    - nombre: Entrada modificada
+      dado: una entrada alterada a mano
+      cuando: se verifica
+      entonces: el sistema señala la entrada y la posición en la cadena
+    - nombre: Entrada eliminada
+      dado: una entrada borrada
+      cuando: se verifica
+      entonces: el sistema detecta el corte de la cadena
+  seguridad:
+    datos:
+      - Ninguno
+    requisitos:
+      - RS-AUD-01
+    criterios:
+      - Dado cualquier cambio en una entrada, cuando se verifica la cadena, entonces la alteración se detecta en el 100 % de los casos de prueba.
+  supuestos: Se usa SHA-256 encadenado; no se requiere firma externa.
+  fuera_de_alcance: Sellado de tiempo por un tercero.
+  notas_tecnicas: Verificación por CLI y desde el panel (HT04).
 
 - id: HT04
   tipo: historia-tecnica
@@ -304,6 +751,38 @@ items:
     - "Un usuario sin sesión no accede al panel."
     - "Un supervisor aprueba o rechaza desde una sola pantalla con contexto completo."
     - "Un auditor consulta y filtra la traza y verifica su integridad, pero no puede aprobar."
+  prioridad: P2
+  contexto: |
+    Supervisores y auditores no deberían usar la línea de comandos. Necesitan una interfaz simple para resolver aprobaciones con contexto y consultar la traza.
+
+    **Valor:** una acción pendiente se revisa y resuelve desde una sola pantalla.
+    **Impacto de no hacerlo:** el prototipo funciona, pero la demostración depende de la CLI.
+  escenarios:
+    - nombre: Sin sesión
+      dado: un usuario sin sesión
+      cuando: abre el panel
+      entonces: es redirigido al inicio de sesión
+    - nombre: Aprobación desde el panel
+      dado: un supervisor con sesión y una acción pendiente
+      cuando: la aprueba o rechaza
+      entonces: la decisión se aplica y queda en la traza
+    - nombre: Auditor
+      dado: un auditor con sesión
+      cuando: consulta y filtra la traza y verifica su integridad
+      entonces: ve los resultados pero no puede aprobar acciones
+  seguridad:
+    datos:
+      - PII ficticia
+      - Credenciales
+    requisitos:
+      - RS-AUT-01
+      - RS-AUD-02
+      - RS-SEC-01
+    criterios:
+      - Dado un auditor, cuando envía directamente la solicitud de aprobar, entonces el servidor la rechaza (el control no depende de ocultar el botón).
+  supuestos: Usuarios del panel definidos en configuración local; contraseñas con `bcrypt`.
+  fuera_de_alcance: SSO y gestión de usuarios desde la interfaz.
+  notas_tecnicas: FastAPI + Jinja2 en `src/panel`.
 
 # ============================ TAREAS ============================
 # --- E1 / HT02 ---
@@ -335,6 +814,7 @@ items:
     - "Un PR con un error de ruff falla la CI."
     - "`.env` nunca aparece en el repositorio."
   archivos: ["pyproject.toml", ".gitignore", ".env.example", ".github/workflows/ci.yml"]
+  prioridad: P0
 
 - id: T02
   tipo: tarea
@@ -357,6 +837,7 @@ items:
     - "Ambos integrantes revisaron y aprobaron el documento en un PR."
     - "Los ADR 001 a 004 están escritos."
   archivos: ["docs/arquitectura.md", "docs/decisiones/"]
+  prioridad: P0
 
 - id: T03
   tipo: tarea
@@ -373,6 +854,7 @@ items:
   criterios:
     - "Cada amenaza tiene una mitigación y una referencia a una tarea o prueba."
   archivos: ["docs/amenazas.md"]
+  prioridad: P0
 
 # --- E1 / HT01 ---
 
@@ -397,6 +879,7 @@ items:
     - "La versión de Odoo queda anotada en el README y en {{T05}}."
   archivos: ["docker-compose.yml", "README.md", ".env.example"]
   notas: "Si en 2 días no hay un Odoo estable, avisar de inmediato: activa la evaluación del plan B en la Sprint Review del 13/11."
+  prioridad: P0
 
 - id: T05
   tipo: tarea
@@ -419,6 +902,7 @@ items:
     - "Las operaciones prohibidas fallan por permisos."
     - "ADR-005 escrito."
   archivos: ["scripts/probar_api_odoo.py", "docs/decisiones/ADR-005-odoo-api.md"]
+  prioridad: P0
 
 - id: T06
   tipo: tarea
@@ -439,6 +923,7 @@ items:
     - "Todos los RUT generados son válidos (prueba unitaria del generador)."
     - "Ejecutarlo dos veces no duplica registros."
   archivos: ["scripts/seed_odoo.py", "src/common/rut.py", "tests/unit/test_rut.py"]
+  prioridad: P0
 
 - id: T07
   tipo: tarea
@@ -459,6 +944,7 @@ items:
     - "Las pruebas de integración pasan con Odoo arriba."
     - "Un intento sin permisos lanza `OdooPermissionError`."
   archivos: ["src/odoo_client/", "tests/integration/test_odoo_client.py"]
+  prioridad: P0
 
 # --- E2 / HU05 ---
 
@@ -489,6 +975,7 @@ items:
   criterios:
     - "Una configuración inválida produce un error legible al iniciar."
   archivos: ["config/mcp_servers.yaml", "src/common/config.py", "tests/unit/test_config.py"]
+  prioridad: P1
 
 - id: T09
   tipo: tarea
@@ -505,6 +992,7 @@ items:
   criterios:
     - "Al quitar una herramienta del YAML y reiniciar, `list_tools` ya no la muestra y su invocación falla."
   archivos: ["src/mcp_servers/common.py", "tests/unit/test_tool_registration.py"]
+  prioridad: P1
 
 # --- E3 / HU06 (va antes de HT03 porque el agente se conecta al gateway) ---
 
@@ -528,6 +1016,7 @@ items:
     - "Un cliente MCP conectado a `/mcp` ve las herramientas de ambos servidores con prefijo y puede invocarlas."
     - "Si un servidor downstream cae, el gateway responde con error controlado."
   archivos: ["src/gateway/app.py", "src/gateway/downstream.py", "tests/integration/test_gateway_proxy.py"]
+  prioridad: P0
 
 - id: T17
   tipo: tarea
@@ -566,6 +1055,7 @@ items:
     - "Las plantillas base se pueden seleccionar con `extends` y ajustar localmente."
     - "La evaluación toma < 1 s (medir en prueba)."
   archivos: ["config/policies.yaml", "config/policies/base/", "src/gateway/policy.py", "tests/unit/test_policy.py"]
+  prioridad: P0
 
 - id: T18
   tipo: tarea
@@ -584,6 +1074,7 @@ items:
     - "El agente no ve herramientas no permitidas."
     - "Invocar directamente una herramienta no permitida devuelve bloqueo."
   archivos: ["src/gateway/app.py", "tests/integration/test_gateway_policy.py"]
+  prioridad: P0
 
 # --- E2 / HT03 ---
 
@@ -607,6 +1098,7 @@ items:
     - "Con Gemini, una consulta simple devuelve una invocación de herramienta bien formada."
   archivos: ["src/agent/providers/", "tests/unit/test_providers.py"]
   notas: "Plan gratuito de Gemini: Google puede usar el contenido para mejorar sus productos. Nunca enviar datos reales; solo ficticios y enmascarados."
+  prioridad: P0
 
 - id: T11
   tipo: tarea
@@ -627,6 +1119,7 @@ items:
     - "Una conversación de prueba invoca al menos una herramienta a través del gateway."
     - "`logs/llm_outbound.jsonl` contiene todo lo enviado al modelo."
   archivos: ["src/agent/", "config/agent_prompt.md"]
+  prioridad: P0
 
 # --- E2 / HU01, HU02 ---
 
@@ -650,6 +1143,7 @@ items:
     - "Desde el agente: \"¿Qué oportunidades tiene <cliente>?\" devuelve los datos reales de Odoo."
     - "La acción queda clasificada como riesgo bajo y se ejecuta sin aprobación."
   archivos: ["src/mcp_servers/crm/", "tests/integration/test_crm_server.py"]
+  prioridad: P1
 
 - id: T13
   tipo: tarea
@@ -669,6 +1163,7 @@ items:
     - "La oportunidad creada o actualizada aparece en Odoo con los valores pedidos."
     - "La acción queda clasificada como riesgo medio."
   archivos: ["src/mcp_servers/crm/", "tests/integration/test_crm_server.py"]
+  prioridad: P2
 
 # --- E2 / HU03 ---
 
@@ -688,6 +1183,7 @@ items:
   criterios:
     - "El borrador queda en Odoo con los datos de la oportunidad y estado borrador."
   archivos: ["src/mcp_servers/invoicing/", "tests/integration/test_invoicing_server.py"]
+  prioridad: P1
 
 - id: T15
   tipo: tarea
@@ -704,6 +1200,7 @@ items:
   criterios:
     - "El agente no puede validar una factura por sí mismo."
   archivos: ["src/mcp_servers/invoicing/", "config/policies/base/facturacion_supervisada.yaml"]
+  prioridad: P1
 
 # --- E3 / HU04 ---
 
@@ -724,6 +1221,7 @@ items:
     - "No se puede aprobar una solicitud ya rechazada o expirada."
     - "Pruebas unitarias cubren todas las transiciones."
   archivos: ["src/gateway/approvals.py", "src/gateway/db.py", "tests/unit/test_approvals.py"]
+  prioridad: P1
 
 - id: T20
   tipo: tarea
@@ -743,6 +1241,7 @@ items:
     - "La acción queda pendiente hasta la decisión del supervisor."
     - "Si se rechaza, la factura sigue en borrador."
   archivos: ["src/gateway/app.py", "tests/integration/test_approval_flow.py"]
+  prioridad: P1
 
 - id: T21
   tipo: tarea
@@ -759,6 +1258,7 @@ items:
   criterios:
     - "Un supervisor ve el contexto completo antes de decidir."
   archivos: ["src/gateway/approvals_cli.py"]
+  prioridad: P1
 
 # --- E3 / HU07 ---
 
@@ -779,6 +1279,7 @@ items:
     - "Un intento de eliminar registros se bloquea y no cambia nada en Odoo."
     - "El intento queda registrado como rechazado."
   archivos: ["src/gateway/app.py", "tests/security/test_blocked_actions.py"]
+  prioridad: P1
 
 - id: T23
   tipo: tarea
@@ -795,6 +1296,7 @@ items:
   criterios:
     - "En ambos casos no se elimina ninguna oportunidad y el intento queda registrado."
   archivos: ["tests/security/test_prompt_injection.py", "docs/pruebas.md"]
+  prioridad: P1
 
 # --- E4 / HU08 ---
 
@@ -816,6 +1318,7 @@ items:
     - "Cobertura de pruebas de los detectores ≥ 90 %."
     - "Cero falsos negativos en el conjunto de datos de {{T06}}."
   archivos: ["config/masking.yaml", "src/gateway/masking/detectors.py", "tests/unit/test_detectors.py"]
+  prioridad: P1
 
 - id: T25
   tipo: tarea
@@ -835,6 +1338,7 @@ items:
     - "`unmask(mask(x)) == x` para todos los casos de prueba."
     - "La base de datos no contiene valores sensibles en claro."
   archivos: ["src/gateway/masking/vault.py", "tests/unit/test_vault.py"]
+  prioridad: P1
 
 - id: T26
   tipo: tarea
@@ -852,6 +1356,7 @@ items:
     - "`verificar_fugas.py` reporta 0 hallazgos tras la demo completa."
     - "Las acciones en Odoo usan los valores reales correctos."
   archivos: ["src/gateway/app.py", "src/agent/", "scripts/verificar_fugas.py", "tests/security/test_no_leaks.py"]
+  prioridad: P1
 
 # --- E4 / HU09, HU10 ---
 
@@ -873,6 +1378,7 @@ items:
     - "Cada acción del caso de uso genera su entrada con todos los campos y el hash de la anterior."
     - "No hay ninguna rama de `handle_call` sin registro (prueba que recorre todos los caminos)."
   archivos: ["src/gateway/audit.py", "tests/unit/test_audit.py"]
+  prioridad: P1
 
 - id: T29
   tipo: tarea
@@ -889,6 +1395,7 @@ items:
   criterios:
     - "Se puede filtrar por fecha, agente, herramienta y decisión."
   archivos: ["src/gateway/audit.py", "src/gateway/app.py"]
+  prioridad: P1
 
 - id: T28
   tipo: tarea
@@ -905,6 +1412,7 @@ items:
   criterios:
     - "Detecta el 100 % de las manipulaciones de prueba (modificación, eliminación, inserción)."
   archivos: ["src/gateway/audit.py", "tests/security/test_audit_integrity.py"]
+  prioridad: P2
 
 # --- E5 / HT04 ---
 
@@ -926,6 +1434,7 @@ items:
     - "Sin sesión se redirige al inicio de sesión."
     - "Un auditor no puede acceder a acciones de aprobación (403)."
   archivos: ["src/panel/", "config/users.yaml", "scripts/crear_usuario.py"]
+  prioridad: P2
 
 - id: T31
   tipo: tarea
@@ -943,6 +1452,7 @@ items:
     - "Un supervisor revisa y resuelve una solicitud desde una sola pantalla."
     - "La decisión queda en la auditoría con el usuario y el comentario."
   archivos: ["src/panel/routes_approvals.py", "src/panel/templates/"]
+  prioridad: P2
 
 - id: T32
   tipo: tarea
@@ -959,6 +1469,7 @@ items:
   criterios:
     - "El auditor filtra la traza y verifica la integridad desde el panel."
   archivos: ["src/panel/routes_audit.py", "src/panel/templates/"]
+  prioridad: P2
 
 # --- E6 / gestión y cierre (tareas directas de la épica) ---
 
@@ -976,6 +1487,7 @@ items:
     - Exportar la imagen de la vista Roadmap para el Anexo A del informe.
   criterios:
     - "El tablero refleja los milestones y la imagen está en el informe."
+  prioridad: P2
 
 - id: T34
   tipo: tarea
@@ -989,6 +1501,7 @@ items:
     - Registrar hallazgos en `docs/validacion.md` (sin datos personales de los entrevistados).
   criterios:
     - "Al menos 2 entrevistas realizadas y resumidas."
+  prioridad: P1
 
 - id: T35
   tipo: tarea
@@ -1004,6 +1517,7 @@ items:
   criterios:
     - "Todos los RF y RNF tienen al menos una prueba asociada."
   archivos: ["docs/pruebas.md"]
+  prioridad: P1
 
 - id: T36
   tipo: tarea
@@ -1019,6 +1533,7 @@ items:
     - Registrar resultados y capturas en `docs/pruebas.md`.
   criterios:
     - "Todos los indicadores tienen un valor medido y comparado con su meta."
+  prioridad: P1
 
 - id: T37
   tipo: tarea
@@ -1033,6 +1548,7 @@ items:
   criterios:
     - "Siguiendo solo el manual, el prototipo queda operativo."
   archivos: ["docs/manual.md"]
+  prioridad: P1
 
 - id: T38
   tipo: tarea
@@ -1047,6 +1563,7 @@ items:
     - Video grabado como respaldo ante fallas en vivo.
   criterios:
     - "El video cubre las 10 historias del MVP."
+  prioridad: P0
 
 - id: T39
   tipo: tarea
@@ -1060,6 +1577,7 @@ items:
     - Actualizar el informe con resultados de pruebas e indicadores, decisiones de arquitectura, desviaciones del plan y trabajo futuro.
   criterios:
     - "Informe entregado el 16 de diciembre de 2026."
+  prioridad: P0
 
 - id: T40
   tipo: tarea
@@ -1073,3 +1591,4 @@ items:
     - Ensayo cronometrado con ambos integrantes, preguntas probables (contraargumentos del Anexo B) y plan ante fallas técnicas.
   criterios:
     - "Presentación ensayada al menos una vez completa antes del 16/12."
+  prioridad: P1

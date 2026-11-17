@@ -53,9 +53,9 @@ uv run ruff check . && uv run ruff format --check .
 
 ## 4. Cómo trabajar con las tareas (issues)
 
-El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea** (sub-issues).
+El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea** (sub-issues) y se planifica en el [GitHub Project](https://github.com/users/mignacio0803-hue/projects/1) (ver «Backlog y tablero» más abajo).
 
-1. **Toma una tarea** (`tipo:tarea`) del sprint activo (milestone) que no esté bloqueada.
+1. **Toma una tarea** (`type: task`) del sprint activo (campo *Sprint* del Project, vista *Tablero*) que no esté bloqueada.
 2. **Lee el contexto completo antes de programar:** la tarea, su historia padre (criterios de aceptación de usuario), su épica y las tareas de las que depende. Si usas la CLI: `gh issue view <n> --comments`.
 3. **Rama:** `feat/<n>-descripcion-corta` (o `fix/`, `docs/`, `chore/`).
 4. **Implementa solo el alcance de la tarea.** Si descubres trabajo adicional, crea un issue nuevo en vez de ampliar el PR.
@@ -70,6 +70,15 @@ El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea*
 - [ ] Ningún invariante de la sección 2 roto.
 - [ ] Documentación actualizada si cambió configuración, comandos o arquitectura.
 - [ ] Revisión cruzada aprobada por el otro integrante.
+
+### Backlog y tablero
+
+- **Títulos:** `[GOB] ` seguido de la acción; las épicas, `[GOB] [Épica] <Módulo> · <resultado>`.
+- **Formato:** usa las plantillas de `.github/ISSUE_TEMPLATE/` (épica, historia INVEST, tarea técnica, spike, bug). Los requisitos de seguridad se marcan con el catálogo de `docs/seguridad.md`.
+- **Labels:** tipo (`epic`, `type: user-story`, `type: tech-story`, `type: task`, `type: spike`, `type: bug`), `priority:P0–P3`, `points:N`, `module:<capa>`, y de proceso `invest: needs-refinement`, `needs-triage`, `bloqueado`, `plan-b`.
+- **Project:** *Status* (Todo → In Progress → Code Review → QA → Done) y *Sprint* se mueven a mano. *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* los calcula `scripts/metricas_project.py` (workflow *Métricas del Project*, cada hora en días hábiles).
+- **Vistas:** *Sprints* (por sprint), *Tablero* (sprint actual y anterior), *Backlog* (por fecha objetivo), *Roadmap* (épicas) y *Refinamiento* (por historia padre).
+- **Fuente de verdad del plan inicial:** `backlog/backlog.yaml`. Si lo cambias, aplica con `python scripts/crear_backlog.py --repo <usuario/repo> --actualizar`.
 
 ## 5. Mapa de responsabilidades (referencial)
 

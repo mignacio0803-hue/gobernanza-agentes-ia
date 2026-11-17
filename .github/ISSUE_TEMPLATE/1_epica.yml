@@ -1,0 +1,51 @@
+name: '📚 Épica'
+description: 'Resultado de negocio que agrupa varias historias'
+title: '[GOB] [Épica] '
+labels: ['epic']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **Título:** `[GOB] [Épica] <Módulo> · <resultado>`. Ej.: `[GOB] [Épica] Gobernanza · Políticas, riesgo y aprobación humana`.
+        - **En el Project:** agrega la épica como opción del campo *Épica* (descripción `#<número>`) y cuelga sus historias como sub-issues.
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: '🎯 Objetivo de negocio'
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: '📋 Contexto'
+      description: 'Alcance: qué incluye la épica.'
+    validations:
+      required: true
+  - type: textarea
+    id: historias
+    attributes:
+      label: '🧩 Historias que la componen'
+      value: |
+        - [ ] #
+    validations:
+      required: true
+  - type: textarea
+    id: metrica
+    attributes:
+      label: '📊 Métrica de éxito'
+      description: 'Indicadores medibles al cierre.'
+    validations:
+      required: true
+  - type: input
+    id: horizonte
+    attributes:
+      label: '📅 Horizonte estimado'
+      placeholder: 'Sprint 2 a Sprint 3 (hasta el 27/11/2026)'
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: 'Módulo'
+      description: 'Agrega también el label module:<capa>.'
+      options: ['infra', 'operaciones', 'gobernanza', 'seguridad', 'panel', 'gestion']
+    validations:
+      required: true

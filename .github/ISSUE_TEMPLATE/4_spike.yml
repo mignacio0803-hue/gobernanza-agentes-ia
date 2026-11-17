@@ -1,0 +1,109 @@
+name: '🔍 Spike (investigación)'
+description: 'Investigación acotada en tiempo para responder una pregunta o reducir incertidumbre'
+title: '[GOB] Spike: '
+labels: ['type: spike']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **Título:** `[GOB] ` seguido de la acción desde la perspectiva del usuario.
+        - **En el Project:** cuélgalo de su padre como sub-issue y asígnale *Sprint*. Los campos *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* se llenan solos.
+  - type: textarea
+    id: historia
+    attributes:
+      label: '🎯 Historia de usuario (Valiosa)'
+      description: 'Qué historia desbloquea.'
+      value: |
+        Desbloquea la historia #
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: '📋 Contexto'
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta
+    attributes:
+      label: '❓ Pregunta a responder'
+    validations:
+      required: true
+  - type: input
+    id: timebox
+    attributes:
+      label: '⏰ Timebox'
+      placeholder: 'Ej.: 1 día'
+    validations:
+      required: true
+  - type: textarea
+    id: entregable
+    attributes:
+      label: '🍰 Entregable'
+      description: 'ADR, prueba de concepto, comentario con la recomendación…'
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: '✅ Criterios de aceptación (Testeable)'
+      value: |
+        - [ ]
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔐 Requisitos de seguridad
+        Obligatorio si toca datos, permisos, el gateway, el modelo o el panel. Si no aplica, marca **Ninguno**.
+  - type: checkboxes
+    id: datos
+    attributes:
+      label: 'Datos involucrados'
+      options:
+        - label: 'PII ficticia (nombres, RUT, correos, teléfonos, direcciones)'
+        - label: 'Comerciales (oportunidades, montos, facturas)'
+        - label: 'Credenciales (claves de API, clave de la bóveda, secreto del panel)'
+        - label: 'Ninguno'
+  - type: checkboxes
+    id: requisitos_seguridad
+    attributes:
+      label: 'Requisitos de seguridad aplicables (docs/seguridad.md)'
+      description: 'Marca los que debe cumplir. Agrega un criterio de seguridad por cada requisito marcado.'
+      options:
+        - label: 'RS-GW-01 Todo pasa por el gateway: el agente nunca se conecta directo a un servidor MCP ni a Odoo.'
+        - label: 'RS-POL-01 Denegación por defecto: una herramienta o acción sin política explícita no se lista ni se ejecuta.'
+        - label: 'RS-RSK-01 Riesgo alto exige aprobación humana registrada antes de ejecutarse.'
+        - label: 'RS-INJ-01 Las instrucciones que llegan dentro de los datos (correos, notas, descripciones) no amplían los permisos del agente.'
+        - label: 'RS-DAT-01 RUT, correo, teléfono y dirección se enmascaran antes de enviarse al proveedor del modelo.'
+        - label: 'RS-DAT-02 Todo lo enviado al modelo queda registrado en `logs/llm_outbound.jsonl`.'
+        - label: 'RS-DAT-03 Solo datos ficticios: nunca datos reales de personas o empresas.'
+        - label: 'RS-AZ-01 Mínimo privilegio: el usuario técnico de Odoo solo tiene los permisos que usan las herramientas.'
+        - label: 'RS-AUD-01 Toda decisión (permitida, bloqueada, pendiente, aprobada, rechazada, fallida) se registra en la traza encadenada, de solo escritura.'
+        - label: 'RS-AUD-02 La traza y los logs no contienen datos sensibles en claro.'
+        - label: 'RS-AUT-01 El panel exige autenticación y aplica roles (supervisor, auditor, administrador) en el servidor.'
+        - label: 'RS-VAL-01 Las entradas y la configuración se validan antes de usarse (esquemas `pydantic`).'
+        - label: 'RS-SEC-01 Sin secretos en el repositorio: credenciales y claves solo en `.env`.'
+        - label: 'RS-MCP-01 Solo servidores MCP propios; no se agregan servidores de terceros.'
+  - type: dropdown
+    id: story_points
+    attributes:
+      label: '📏 Story Points (Estimable / Pequeña)'
+      description: 'Fibonacci. Una historia de 13 se divide antes de entrar a un sprint. Agrega el label points:N; el campo Puntos del Project se llena solo.'
+      options: ['1', '2', '3', '5', '8', '13 (dividir antes del sprint)']
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: 'Prioridad'
+      description: 'Agrega también el label priority:Px.'
+      options: ['P0 · Crítica: bloquea el camino principal', 'P1 · Alta: necesaria para el MVP', 'P2 · Media: deseable en el MVP', 'P3 · Baja: si sobra tiempo']
+    validations:
+      required: true
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: 'Módulo'
+      description: 'Agrega también el label module:<capa>.'
+      options: ['infra', 'operaciones', 'gobernanza', 'seguridad', 'panel', 'gestion']
+    validations:
+      required: true
