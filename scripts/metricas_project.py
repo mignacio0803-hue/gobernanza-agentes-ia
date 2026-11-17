@@ -5,7 +5,9 @@ Para cada issue del Project:
   - *Puntos*: del label `points:N`.
   - *Épica*: siguiendo la cadena de padres hasta el issue con label `epic`. Las opciones del campo
     se crean a partir de las épicas (`E3 · Gobernanza`, descripción `#3`).
+  - *Fecha inicio*: primer día de su *Sprint*. En las épicas, la menor fecha de sus descendientes.
   - *Fecha objetivo*: último día hábil de su *Sprint*. En las épicas, la mayor fecha de sus descendientes.
+    Con estas dos fechas, la vista *Roadmap* dibuja cada ítem como una barra en su periodo.
   - *Completado %*: 100 si está en Done o cerrado; 0 si no (no aplica a épicas).
   - *Status*: Done si el issue está cerrado.
 
@@ -189,7 +191,7 @@ def main() -> None:
 
     p = Project(args.owner, args.project)
     print("1) Campos")
-    for name, kind in [("Puntos", "NUMBER"), ("Completado %", "NUMBER"), ("Fecha objetivo", "DATE"),
+    for name, kind in [("Puntos", "NUMBER"), ("Completado %", "NUMBER"), ("Fecha inicio", "DATE"), ("Fecha objetivo", "DATE"),
                        ("Avance acumulado %", "NUMBER")]:
         p.ensure_field(name, kind)
     p.ensure_field("Serie", "SINGLE_SELECT", [
@@ -252,11 +254,14 @@ def main() -> None:
                 want["Completado %"] = {"number": pct}
             sprint = its.get(v.get("Sprint"))
             if sprint:
-                date = last_workday(sprint)
+                start, date = sprint["startDate"], last_workday(sprint)
+                if v.get("Fecha inicio") != start:
+                    want["Fecha inicio"] = {"date": start}
                 if v.get("Fecha objetivo") != date:
                     want["Fecha objetivo"] = {"date": date}
                 if e:
-                    epic_dates[e] = max(epic_dates.get(e, ""), date)
+                    lo, hi = epic_dates.get(e, (start, date))
+                    epic_dates[e] = (min(lo, start), max(hi, date))
 
         for field, value in want.items():
             p.set(it["id"], field, value)
@@ -264,11 +269,13 @@ def main() -> None:
         if want:
             print(f"  #{n}: {', '.join(want)}")
 
-    for e, date in epic_dates.items():
-        if values(issues[e]).get("Fecha objetivo") != date:
-            p.set(issues[e]["id"], "Fecha objetivo", {"date": date})
-            changes += 1
-            print(f"  #{e} (épica): Fecha objetivo")
+    for e, (start, date) in epic_dates.items():
+        ev = values(issues[e])
+        for field, value in (("Fecha inicio", start), ("Fecha objetivo", date)):
+            if ev.get(field) != value:
+                p.set(issues[e]["id"], field, {"date": value})
+                changes += 1
+                print(f"  #{e} (épica): {field}")
     print(f"  {changes} cambios")
 
     print("3) Avance acumulado Plan vs Real")

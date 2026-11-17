@@ -76,8 +76,8 @@ El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea*
 - **Títulos:** `[GOB] ` seguido de la acción; las épicas, `[GOB] [Épica] <Módulo> · <resultado>`.
 - **Formato:** usa las plantillas de `.github/ISSUE_TEMPLATE/` (épica, historia INVEST, tarea técnica, spike, bug). Los requisitos de seguridad se marcan con el catálogo de `docs/seguridad.md`.
 - **Labels:** tipo (`epic`, `type: user-story`, `type: tech-story`, `type: task`, `type: spike`, `type: bug`), `priority:P0–P3`, `points:N`, `module:<capa>`, y de proceso `invest: needs-refinement`, `needs-triage`, `bloqueado`, `plan-b`.
-- **Project:** *Status* (Todo → In Progress → Code Review → QA → Done) y *Sprint* se mueven a mano. *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* los calcula `scripts/metricas_project.py` (workflow *Métricas del Project*, cada hora en días hábiles).
-- **Vistas:** *Sprints* (por sprint), *Tablero* (sprint actual y anterior), *Backlog* (por fecha objetivo), *Roadmap* (épicas) y *Refinamiento* (por historia padre).
+- **Project:** *Status* (Todo → In Progress → Code Review → QA → Done) y *Sprint* se mueven a mano. *Puntos*, *Épica*, *Fecha inicio*, *Fecha objetivo* y *Completado %* los calcula `scripts/metricas_project.py` (workflow *Métricas del Project*, cada hora en días hábiles).
+- **Vistas:** *Sprints* (por sprint), *Tablero* (sprint actual y anterior), *Backlog* (por fecha objetivo), *Roadmap* (cada ítem como barra entre su Fecha inicio y Fecha objetivo, agrupado por épica y con los sprints como marcadores) y *Refinamiento* (por historia padre).
 - **Fuente de verdad del plan inicial:** `backlog/backlog.yaml`. Si lo cambias, aplica con `python scripts/crear_backlog.py --repo <usuario/repo> --actualizar`.
 
 ## 5. Mapa de responsabilidades (referencial)

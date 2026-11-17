@@ -29,7 +29,7 @@ python scripts/crear_backlog.py --vista-previa                                # 
 
 ## Métricas del Project
 
-El workflow [`metricas.yml`](.github/workflows/metricas.yml) ejecuta `scripts/metricas_project.py` cada hora en días hábiles. Llena *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* de cada issue, y mantiene los marcadores «📈 Plan/Real acumulado · Sprint N» del gráfico de avance en *Insights*.
+El workflow [`metricas.yml`](.github/workflows/metricas.yml) ejecuta `scripts/metricas_project.py` cada hora en días hábiles. Llena *Puntos*, *Épica*, *Fecha inicio*, *Fecha objetivo* y *Completado %* de cada issue, y mantiene los marcadores «📈 Plan/Real acumulado · Sprint N» del gráfico de avance en *Insights*.
 
 Necesita el secret **`PROJECT_TOKEN`**: un token *classic* con los scopes `repo` y `project` (*Settings → Secrets and variables → Actions*). Se puede ejecutar a mano:
 
