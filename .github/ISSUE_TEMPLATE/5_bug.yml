@@ -1,0 +1,85 @@
+name: '🐛 Reporte de bug'
+description: 'Comportamiento incorrecto del prototipo'
+title: '[GOB] '
+labels: ['type: bug', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - **Título:** `[GOB] ` seguido de lo que falla, en una frase. Ej.: `[GOB] El gateway lista herramientas sin política`.
+        - **En el Project:** cuélgalo de su épica como sub-issue. Al clasificarlo, quita `needs-triage` y agrega `priority:Px` y `points:N`.
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: '📋 Descripción'
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: '🔁 Pasos para reproducir'
+      value: |
+        1.
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: '✅ Resultado esperado'
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: '❌ Resultado actual'
+    validations:
+      required: true
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: '🔥 Severidad'
+      options: ['Crítica: rompe un invariante de seguridad', 'Alta: bloquea un flujo principal', 'Media: hay un desvío', 'Baja: cosmético']
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔐 Requisitos de seguridad
+        Obligatorio si toca datos, permisos, el gateway, el modelo o el panel. Si no aplica, marca **Ninguno**.
+  - type: checkboxes
+    id: datos
+    attributes:
+      label: 'Datos involucrados'
+      options:
+        - label: 'PII ficticia (nombres, RUT, correos, teléfonos, direcciones)'
+        - label: 'Comerciales (oportunidades, montos, facturas)'
+        - label: 'Credenciales (claves de API, clave de la bóveda, secreto del panel)'
+        - label: 'Ninguno'
+  - type: checkboxes
+    id: requisitos_seguridad
+    attributes:
+      label: 'Requisitos de seguridad aplicables (docs/seguridad.md)'
+      description: 'Marca los que debe cumplir. Agrega un criterio de seguridad por cada requisito marcado.'
+      options:
+        - label: 'RS-GW-01 Todo pasa por el gateway: el agente nunca se conecta directo a un servidor MCP ni a Odoo.'
+        - label: 'RS-POL-01 Denegación por defecto: una herramienta o acción sin política explícita no se lista ni se ejecuta.'
+        - label: 'RS-RSK-01 Riesgo alto exige aprobación humana registrada antes de ejecutarse.'
+        - label: 'RS-INJ-01 Las instrucciones que llegan dentro de los datos (correos, notas, descripciones) no amplían los permisos del agente.'
+        - label: 'RS-DAT-01 RUT, correo, teléfono y dirección se enmascaran antes de enviarse al proveedor del modelo.'
+        - label: 'RS-DAT-02 Todo lo enviado al modelo queda registrado en `logs/llm_outbound.jsonl`.'
+        - label: 'RS-DAT-03 Solo datos ficticios: nunca datos reales de personas o empresas.'
+        - label: 'RS-AZ-01 Mínimo privilegio: el usuario técnico de Odoo solo tiene los permisos que usan las herramientas.'
+        - label: 'RS-AUD-01 Toda decisión (permitida, bloqueada, pendiente, aprobada, rechazada, fallida) se registra en la traza encadenada, de solo escritura.'
+        - label: 'RS-AUD-02 La traza y los logs no contienen datos sensibles en claro.'
+        - label: 'RS-AUT-01 El panel exige autenticación y aplica roles (supervisor, auditor, administrador) en el servidor.'
+        - label: 'RS-VAL-01 Las entradas y la configuración se validan antes de usarse (esquemas `pydantic`).'
+        - label: 'RS-SEC-01 Sin secretos en el repositorio: credenciales y claves solo en `.env`.'
+        - label: 'RS-MCP-01 Solo servidores MCP propios; no se agregan servidores de terceros.'
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: 'Módulo'
+      description: 'Agrega también el label module:<capa>.'
+      options: ['infra', 'operaciones', 'gobernanza', 'seguridad', 'panel', 'gestion']
+    validations:
+      required: true

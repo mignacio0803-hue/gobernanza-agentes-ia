@@ -1,0 +1,164 @@
+name: '📝 Historia de usuario'
+description: 'Valor visible para un usuario real, redactada con INVEST y lista para planificar (Definition of Ready)'
+title: '[GOB] '
+labels: ['type: user-story', 'invest: needs-refinement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Una historia describe el **valor que recibe un usuario real** (operador comercial, supervisor, auditor, administrador de TI…). Si no puedes nombrar a ese usuario, abre una **Tarea técnica**.
+
+        - **Título:** `[GOB] ` seguido de la acción desde la perspectiva del usuario.
+        - **En el Project:** cuélgalo de su padre como sub-issue y asígnale *Sprint*. Los campos *Puntos*, *Épica*, *Fecha objetivo* y *Completado %* se llenan solos.
+        - Cuando el checklist INVEST esté completo, quita el label `invest: needs-refinement`.
+  - type: textarea
+    id: historia
+    attributes:
+      label: '🎯 Historia de usuario (Valiosa)'
+      description: '"Como" nombra un rol real, nunca "el sistema". "Quiero" es una acción observable. "Para" es un beneficio concreto.'
+      value: |
+        **Como** [rol de un usuario real],
+        **Quiero** [acción observable],
+        **Para** [beneficio concreto].
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: '📋 Contexto'
+      description: 'El problema que vive hoy el usuario, el valor que aporta resolverlo y el impacto de no hacerlo. Describe el problema, no la solución.'
+      value: |
+        [Problema actual]
+
+        **Valor:** …
+        **Impacto de no hacerlo:** …
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: '✅ Criterios de aceptación (Testeable)'
+      description: 'Un escenario por comportamiento, en lenguaje de negocio, verificable sin leer el código. Mínimo: flujo principal, estado vacío y un caso borde.'
+      value: |
+        **Escenario 1: [flujo principal]**
+
+        - **Dado** …
+        - **Cuando** …
+        - **Entonces** …
+
+        ---
+
+        **Escenario 2: [sin datos o estado vacío]**
+
+        - **Dado** …
+        - **Cuando** …
+        - **Entonces** …
+
+        ---
+
+        **Escenario 3: [caso borde]**
+
+        - **Dado** …
+        - **Cuando** …
+        - **Entonces** …
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔐 Requisitos de seguridad
+        Obligatorio si toca datos, permisos, el gateway, el modelo o el panel. Si no aplica, marca **Ninguno**.
+  - type: checkboxes
+    id: datos
+    attributes:
+      label: 'Datos involucrados'
+      options:
+        - label: 'PII ficticia (nombres, RUT, correos, teléfonos, direcciones)'
+        - label: 'Comerciales (oportunidades, montos, facturas)'
+        - label: 'Credenciales (claves de API, clave de la bóveda, secreto del panel)'
+        - label: 'Ninguno'
+  - type: checkboxes
+    id: requisitos_seguridad
+    attributes:
+      label: 'Requisitos de seguridad aplicables (docs/seguridad.md)'
+      description: 'Marca los que debe cumplir. Agrega un criterio de seguridad por cada requisito marcado.'
+      options:
+        - label: 'RS-GW-01 Todo pasa por el gateway: el agente nunca se conecta directo a un servidor MCP ni a Odoo.'
+        - label: 'RS-POL-01 Denegación por defecto: una herramienta o acción sin política explícita no se lista ni se ejecuta.'
+        - label: 'RS-RSK-01 Riesgo alto exige aprobación humana registrada antes de ejecutarse.'
+        - label: 'RS-INJ-01 Las instrucciones que llegan dentro de los datos (correos, notas, descripciones) no amplían los permisos del agente.'
+        - label: 'RS-DAT-01 RUT, correo, teléfono y dirección se enmascaran antes de enviarse al proveedor del modelo.'
+        - label: 'RS-DAT-02 Todo lo enviado al modelo queda registrado en `logs/llm_outbound.jsonl`.'
+        - label: 'RS-DAT-03 Solo datos ficticios: nunca datos reales de personas o empresas.'
+        - label: 'RS-AZ-01 Mínimo privilegio: el usuario técnico de Odoo solo tiene los permisos que usan las herramientas.'
+        - label: 'RS-AUD-01 Toda decisión (permitida, bloqueada, pendiente, aprobada, rechazada, fallida) se registra en la traza encadenada, de solo escritura.'
+        - label: 'RS-AUD-02 La traza y los logs no contienen datos sensibles en claro.'
+        - label: 'RS-AUT-01 El panel exige autenticación y aplica roles (supervisor, auditor, administrador) en el servidor.'
+        - label: 'RS-VAL-01 Las entradas y la configuración se validan antes de usarse (esquemas `pydantic`).'
+        - label: 'RS-SEC-01 Sin secretos en el repositorio: credenciales y claves solo en `.env`.'
+        - label: 'RS-MCP-01 Solo servidores MCP propios; no se agregan servidores de terceros.'
+  - type: textarea
+    id: criterios_seguridad
+    attributes:
+      label: 'Criterios de aceptación de seguridad'
+      description: 'Uno por requisito marcado, con el formato Dado / cuando / entonces. Incluye al menos un caso negativo.'
+      value: |
+        - [ ] Dado …, cuando …, entonces …
+  - type: dropdown
+    id: story_points
+    attributes:
+      label: '📏 Story Points (Estimable / Pequeña)'
+      description: 'Fibonacci. Una historia de 13 se divide antes de entrar a un sprint. Agrega el label points:N; el campo Puntos del Project se llena solo.'
+      options: ['1', '2', '3', '5', '8', '13 (dividir antes del sprint)']
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: 'Prioridad'
+      description: 'Agrega también el label priority:Px.'
+      options: ['P0 · Crítica: bloquea el camino principal', 'P1 · Alta: necesaria para el MVP', 'P2 · Media: deseable en el MVP', 'P3 · Baja: si sobra tiempo']
+    validations:
+      required: true
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: 'Módulo'
+      description: 'Agrega también el label module:<capa>.'
+      options: ['infra', 'operaciones', 'gobernanza', 'seguridad', 'panel', 'gestion']
+    validations:
+      required: true
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: '🔗 Dependencias (Independiente)'
+      value: |
+        - Épica: #
+        - Depende de: ninguna
+        - Bloquea a: ninguna
+  - type: textarea
+    id: supuestos
+    attributes:
+      label: '🤝 Supuestos y puntos a negociar (Negociable)'
+  - type: textarea
+    id: fuera_de_alcance
+    attributes:
+      label: '🚫 Fuera de alcance (No-objetivos)'
+  - type: textarea
+    id: notas_tecnicas
+    attributes:
+      label: '💻 Notas técnicas / Contexto DEV'
+      description: 'Módulos y archivos donde mirar, patrones a reutilizar, restricciones. Las tareas de implementación van como sub-issues.'
+  - type: checkboxes
+    id: invest
+    attributes:
+      label: '🔍 Checklist INVEST (Definition of Ready)'
+      description: 'Lo que quede sin marcar se resuelve en refinamiento antes del sprint.'
+      options:
+        - label: 'Independiente: se puede construir sola'
+        - label: 'Negociable: deja espacio a conversar'
+        - label: 'Valiosa: el beneficio para el usuario es claro'
+        - label: 'Estimable: tiene story points'
+        - label: 'Pequeña: cabe en un sprint'
+        - label: 'Testeable: tiene criterios de aceptación en lenguaje de negocio'
+        - label: 'Segura: requisitos de seguridad completos'

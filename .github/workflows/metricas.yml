@@ -1,0 +1,38 @@
+name: Métricas del Project
+
+# Mantiene al día los campos derivados del Project (Puntos, Épica, Fecha objetivo, Completado %)
+# y los marcadores del gráfico «Avance del proyecto vs plan». Ver scripts/metricas_project.py.
+
+on:
+  schedule:
+    # Cada hora, de lunes a viernes, 08:00–20:00 hora de Chile (UTC-3)
+    - cron: '0 11-23 * * 1-5'
+  workflow_dispatch:
+
+concurrency:
+  group: metricas-project
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # El GITHUB_TOKEN de Actions no puede escribir en un Project de usuario.
+      # Secret PROJECT_TOKEN: token classic con los scopes `repo` y `project`.
+      GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificar el token
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Falta el secret PROJECT_TOKEN (token classic con scopes repo y project)"
+            exit 1
+          fi
+
+      - name: Sincronizar campos y avance Plan vs Real
+        run: python3 scripts/metricas_project.py --owner "${{ github.repository_owner }}" --project 1
