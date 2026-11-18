@@ -57,7 +57,11 @@ El backlog vive en GitHub Issues con jerarquía **Épica → Historia → Tarea*
 
 1. **Toma una tarea** (`type: task`) del sprint activo (campo *Sprint* del Project, vista *Tablero*) que no esté bloqueada.
 2. **Lee el contexto completo antes de programar:** la tarea, su historia padre (criterios de aceptación de usuario), su épica y las tareas de las que depende. Si usas la CLI: `gh issue view <n> --comments`.
-3. **Rama:** `feat/<n>-descripcion-corta` (o `fix/`, `docs/`, `chore/`).
+3. **Ramas (Gitflow):** crea tu rama desde `dev` actualizado:
+   `feat/<n>-descripcion-corta` (o `fix/`, `docs/`, `chore/`).
+   Nunca hagas commit directo en `dev` ni en `main`.
+   El PR va siempre hacia `dev` y requiere al menos una aprobación del otro integrante.
+   `dev` se fusiona en `main` mediante PR al cierre de cada sprint (versión estable para la Sprint Review).
 4. **Implementa solo el alcance de la tarea.** Si descubres trabajo adicional, crea un issue nuevo en vez de ampliar el PR.
 5. **Pruebas:** cada criterio de aceptación de la tarea debe quedar cubierto por una prueba o por una verificación manual descrita en el PR.
 6. **PR:** usa la plantilla, enlaza con `Closes #<n>` y marca la lista de verificación.
